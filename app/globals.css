@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+:root { --ink: #03020b; --violet: #8b5cf6; --cyan: #22d3ee; --pink: #fb37ff; --gold: #ffd35a; }
+* { box-sizing: border-box; }
+html, body { min-height: 100%; margin: 0; }
+body { background: var(--ink); color: white; font-family: var(--font-body), sans-serif; }
+
+.cosmos {
+  position: relative; display: grid; min-height: 100svh; place-items: center; overflow: hidden; isolation: isolate;
+  background: radial-gradient(circle at 50% 45%, rgb(77 38 144 / 35%), transparent 34%), radial-gradient(circle at 80% 10%, rgb(8 145 178 / 20%), transparent 28%), linear-gradient(145deg, #020108 0%, #09031d 48%, #01040b 100%);
+}
+.cosmos::before { position: absolute; z-index: 20; inset: 0; pointer-events: none; content: ''; background: radial-gradient(circle, transparent 46%, rgb(0 0 0 / 68%) 110%); }
+.aurora { position: absolute; width: 70vmax; height: 70vmax; border-radius: 42% 58% 64% 36%; filter: blur(80px); mix-blend-mode: screen; opacity: .18; animation: drift 17s ease-in-out infinite alternate; }
+.aurora-one { top: -52vmax; left: -18vmax; background: conic-gradient(from 90deg, var(--pink), transparent, var(--cyan), transparent); }
+.aurora-two { right: -35vmax; bottom: -52vmax; background: conic-gradient(from 220deg, var(--gold), transparent, var(--violet), transparent); animation-delay: -8s; }
+.starfield, .scanlines, .grid-floor { position: absolute; inset: 0; pointer-events: none; }
+.starfield i { position: absolute; display: block; border-radius: 50%; background: white; box-shadow: 0 0 8px 1px var(--cyan); animation: twinkle ease-in-out infinite alternate; }
+.scanlines { z-index: 10; opacity: .065; background: repeating-linear-gradient(to bottom, transparent 0 3px, white 4px); }
+.grid-floor { top: 58%; opacity: .12; transform: perspective(320px) rotateX(64deg) scale(1.8); transform-origin: center top; background-image: linear-gradient(rgb(34 211 238 / 70%) 1px, transparent 1px), linear-gradient(90deg, rgb(34 211 238 / 70%) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 72%); }
+.hero { position: relative; z-index: 5; width: min(92vw, 1100px); padding: clamp(3rem, 8vw, 7rem) 1.5rem; text-align: center; animation: arrive 1.2s cubic-bezier(.16, 1, .3, 1) both; }
+.eyebrow { margin: 0 0 1.25rem; color: var(--cyan); font-size: clamp(.62rem, 1.5vw, .82rem); font-weight: 700; letter-spacing: .46em; text-transform: uppercase; text-shadow: 0 0 16px rgb(34 211 238 / 85%); animation: flicker 5s linear infinite; }
+h1 { position: relative; margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(3.8rem, 13.5vw, 11rem); font-weight: 400; letter-spacing: -.055em; line-height: .88; text-transform: uppercase; filter: drop-shadow(0 0 34px rgb(139 92 246 / 45%)); }
+h1 span { position: relative; z-index: 2; color: transparent; background: linear-gradient(100deg, #fff 8%, var(--cyan) 26%, #fff 43%, var(--gold) 61%, var(--pink) 78%, #fff 94%); background-size: 250% 100%; background-clip: text; -webkit-background-clip: text; -webkit-text-stroke: 1px rgb(255 255 255 / 35%); animation: chrome 5s linear infinite; }
+h1::before, h1::after { position: absolute; inset: 0; content: attr(data-text); pointer-events: none; }
+h1::before { z-index: 1; color: var(--pink); transform: translate(3px, 2px); clip-path: inset(15% 0 54% 0); animation: glitch-one 3.8s steps(1) infinite; }
+h1::after { z-index: 1; color: var(--cyan); transform: translate(-3px, -1px); clip-path: inset(62% 0 11% 0); animation: glitch-two 3.1s steps(1) infinite; }
+.flare { width: min(570px, 78vw); height: 2px; margin: clamp(1.1rem, 3vw, 2.2rem) auto 1.6rem; background: linear-gradient(90deg, transparent, var(--cyan), white 48% 52%, var(--pink), transparent); box-shadow: 0 0 10px white, 0 0 25px var(--cyan), 0 0 48px var(--pink); animation: pulse 2.8s ease-in-out infinite; }
+.message { margin: 0; font-size: clamp(1rem, 2.25vw, 1.5rem); font-weight: 500; letter-spacing: .08em; text-shadow: 0 0 20px rgb(255 255 255 / 30%); }
+.signal { display: flex; justify-content: center; gap: .55rem; margin-top: 1.7rem; }
+.signal span { width: 5px; height: 5px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); animation: signal 1.2s ease-in-out infinite; }
+.signal span:nth-child(2) { animation-delay: .2s; } .signal span:nth-child(3) { animation-delay: .4s; }
+.orbit { position: absolute; z-index: -1; top: 50%; left: 50%; border: 1px solid rgb(139 92 246 / 20%); border-radius: 50%; transform: translate(-50%, -50%) rotateX(68deg); animation: orbit-spin 12s linear infinite; }
+.orbit-outer { width: min(92vw, 900px); height: min(92vw, 900px); }
+.orbit-inner { width: min(65vw, 620px); height: min(65vw, 620px); animation-direction: reverse; animation-duration: 8s; }
+.orbit span { position: absolute; top: 50%; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: white; box-shadow: 0 0 12px white, 0 0 30px var(--pink); }
+.orbit-inner span { background: var(--cyan); box-shadow: 0 0 18px var(--cyan); }
+.coordinates { position: absolute; z-index: 22; bottom: 1.5rem; margin: 0; color: rgb(255 255 255 / 38%); font-family: var(--font-body), monospace; font-size: .58rem; letter-spacing: .22em; text-align: center; }
+
+@keyframes arrive { from { opacity: 0; transform: scale(.78); filter: blur(18px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+@keyframes chrome { to { background-position: -250% 0; } }
+@keyframes drift { to { transform: translate(18vw, 12vh) rotate(35deg) scale(1.18); } }
+@keyframes twinkle { from { opacity: .12; transform: scale(.45); } to { opacity: 1; transform: scale(1.5); } }
+@keyframes pulse { 50% { opacity: .55; transform: scaleX(.72); } }
+@keyframes signal { 0%, 100% { opacity: .25; transform: scale(.7); } 50% { opacity: 1; transform: scale(1.45); } }
+@keyframes orbit-spin { to { transform: translate(-50%, -50%) rotateX(68deg) rotateZ(360deg); } }
+@keyframes flicker { 0%, 7%, 9%, 100% { opacity: 1; } 8% { opacity: .35; } }
+@keyframes glitch-one { 0%, 91%, 100% { transform: translate(3px, 2px); } 92% { transform: translate(-8px, 2px); } 94% { transform: translate(10px, 2px); } 96% { transform: translate(3px, 2px); } }
+@keyframes glitch-two { 0%, 86%, 100% { transform: translate(-3px, -1px); } 87% { transform: translate(9px, -1px); } 90% { transform: translate(-11px, 3px); } 92% { transform: translate(-3px, -1px); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+@media (max-width: 520px) { .eyebrow { letter-spacing: .24em; } .message { letter-spacing: .025em; } .coordinates { width: 90%; } }
