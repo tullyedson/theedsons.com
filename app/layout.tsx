@@ -8,7 +8,6 @@ const body = Space_Grotesk({ variable: '--font-body', subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://theedsons.com'),
   title: 'The Edsons',
-  icons: { icon: '/favicon.svg' },
   description: 'The Edson family website. Nothing to see here yet, move along...',
   openGraph: {
     title: 'The Edsons',
