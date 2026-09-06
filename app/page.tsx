@@ -26,11 +26,19 @@ export default function Home() {
         <p className="eyebrow">An Edson Family Production</p>
         <h1 id="family-name" data-text="The Edsons"><span>The Edsons</span></h1>
         <div className="flare" aria-hidden="true" />
-        <p className="message">Nothing to see here yet move along...</p>
+        <p className="message">Nothing to see here move along...</p>
         <div className="signal" aria-hidden="true"><span /><span /><span /></div>
       </section>
 
-      <p className="coordinates" aria-hidden="true">EST. SOMEWHERE IN THE SPACE-TIME CONTINUUM</p>
+      <a className="arcade-link" href="https://astersarcade.com/" aria-label="Visit Aster's Arcade" title="Aster's Arcade">
+        <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M7 3h19l-2 8 2 12 3 4v10H4V27l3-4V3Z" />
+          <path d="M7 9h17M7 23h19M4 27h25" />
+          <path d="M10 12h11l2 8H10Z" />
+          <path d="M11 24v2m7-1h1m3 0h1M14 31h5v3h-5Z" />
+          <circle cx="11" cy="22.5" r="1.5" />
+        </svg>
+      </a>
     </main>
   );
 }

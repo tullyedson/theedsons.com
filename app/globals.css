@@ -16,7 +16,7 @@ body { background: var(--ink); color: white; font-family: var(--font-body), sans
 .starfield, .scanlines, .grid-floor { position: absolute; inset: 0; pointer-events: none; }
 .starfield i { position: absolute; display: block; border-radius: 50%; background: white; box-shadow: 0 0 8px 1px var(--cyan); animation: twinkle ease-in-out infinite alternate; }
 .scanlines { z-index: 10; opacity: .065; background: repeating-linear-gradient(to bottom, transparent 0 3px, white 4px); }
-.grid-floor { top: 58%; opacity: .12; transform: perspective(320px) rotateX(64deg) scale(1.8); transform-origin: center top; background-image: linear-gradient(rgb(34 211 238 / 70%) 1px, transparent 1px), linear-gradient(90deg, rgb(34 211 238 / 70%) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 72%); }
+.grid-floor { top: 58%; opacity: .12; transform: perspective(320px) rotateX(64deg) scale(1.8); transform-origin: center top; background-image: linear-gradient(rgb(34 211 238 / 70%) 1px, transparent 1px), linear-gradient(90deg, rgb(34 211 238 / 70%) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to bottom, black, transparent 72%); animation: grid-travel 5s linear infinite; }
 .hero { position: relative; z-index: 5; width: min(92vw, 1100px); padding: clamp(3rem, 8vw, 7rem) 1.5rem; text-align: center; animation: arrive 1.2s cubic-bezier(.16, 1, .3, 1) both; }
 .eyebrow { margin: 0 0 1.25rem; color: var(--cyan); font-size: clamp(.62rem, 1.5vw, .82rem); font-weight: 700; letter-spacing: .46em; text-transform: uppercase; text-shadow: 0 0 16px rgb(34 211 238 / 85%); animation: flicker 5s linear infinite; }
 h1 { position: relative; margin: 0; font-family: var(--font-display), sans-serif; font-size: clamp(3.8rem, 13.5vw, 11rem); font-weight: 400; letter-spacing: -.055em; line-height: .88; text-transform: uppercase; filter: drop-shadow(0 0 34px rgb(139 92 246 / 45%)); }
@@ -34,8 +34,12 @@ h1::after { z-index: 1; color: var(--cyan); transform: translate(-3px, -1px); cl
 .orbit-inner { width: min(65vw, 620px); height: min(65vw, 620px); animation-direction: reverse; animation-duration: 8s; }
 .orbit span { position: absolute; top: 50%; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: white; box-shadow: 0 0 12px white, 0 0 30px var(--pink); }
 .orbit-inner span { background: var(--cyan); box-shadow: 0 0 18px var(--cyan); }
-.coordinates { position: absolute; z-index: 22; bottom: 1.5rem; margin: 0; color: rgb(255 255 255 / 38%); font-family: var(--font-body), monospace; font-size: .58rem; letter-spacing: .22em; text-align: center; }
+.arcade-link { position: absolute; z-index: 22; left: max(1.25rem, env(safe-area-inset-left)); bottom: max(1.25rem, env(safe-area-inset-bottom)); display: grid; place-items: center; width: 48px; height: 52px; border-radius: 8px; color: var(--cyan); text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .2s, filter .2s; }
+.arcade-link svg { width: 28px; height: 35px; }
+.arcade-link:hover { color: var(--pink); filter: drop-shadow(0 0 8px rgb(251 55 255 / 65%)); }
+.arcade-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 
+@keyframes grid-travel { to { background-position: 0 52px; } }
 @keyframes arrive { from { opacity: 0; transform: scale(.78); filter: blur(18px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
 @keyframes chrome { to { background-position: -250% 0; } }
 @keyframes drift { to { transform: translate(18vw, 12vh) rotate(35deg) scale(1.18); } }
@@ -47,4 +51,4 @@ h1::after { z-index: 1; color: var(--cyan); transform: translate(-3px, -1px); cl
 @keyframes glitch-one { 0%, 91%, 100% { transform: translate(3px, 2px); } 92% { transform: translate(-8px, 2px); } 94% { transform: translate(10px, 2px); } 96% { transform: translate(3px, 2px); } }
 @keyframes glitch-two { 0%, 86%, 100% { transform: translate(-3px, -1px); } 87% { transform: translate(9px, -1px); } 90% { transform: translate(-11px, 3px); } 92% { transform: translate(-3px, -1px); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
-@media (max-width: 520px) { .eyebrow { letter-spacing: .24em; } .message { letter-spacing: .025em; } .coordinates { width: 90%; } }
+@media (max-width: 520px) { .eyebrow { letter-spacing: .24em; } .message { letter-spacing: .025em; } }
