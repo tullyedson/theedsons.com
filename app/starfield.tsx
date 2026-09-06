@@ -1,12 +1,12 @@
 'use client';
 
-import { useEffect, useRef, type RefObject } from 'react';
+import { useEffect, useRef } from 'react';
 
-type Star = { x: number; y: number; z: number; radius: number; phase: number };
+type Star = { x: number; y: number; z: number; radius: number; phase: number; color: string };
 
-const WARP_DURATION = 3600;
+const STAR_COLORS = ['34, 211, 238', '251, 55, 255', '255, 211, 90', '235, 243, 255'];
 
-export function Starfield({ moving, warpStarted }: { moving: boolean; warpStarted: RefObject<number | null> }) {
+export function Starfield({ moving }: { moving: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -38,9 +38,7 @@ export function Starfield({ moving, warpStarted }: { moving: boolean; warpStarte
       if (moving) elapsed += delta;
       camera.x += (pointer.x - camera.x) * Math.min(delta * 3, 1);
       camera.y += (pointer.y - camera.y) * Math.min(delta * 3, 1);
-      const warpAge = warpStarted.current === null ? WARP_DURATION : now - warpStarted.current;
-      const warp = moving && warpAge >= 0 && warpAge < WARP_DURATION ? Math.pow(Math.sin(warpAge / WARP_DURATION * Math.PI), 2) : 0;
-      const travel = moving ? delta * (12 + warp * 1800) : 0;
+      const travel = moving ? delta * 22 : 0;
 
       context.clearRect(0, 0, width, height);
       for (const star of stars) {
@@ -50,23 +48,16 @@ export function Starfield({ moving, warpStarted }: { moving: boolean; warpStarte
         const x = width / 2 + star.x * scale + camera.x * scale * 11;
         const y = height / 2 + star.y * scale + camera.y * scale * 11;
         if (x < -60 || x > width + 60 || y < -60 || y > height + 60) continue;
-        const radius = Math.min(star.radius * scale, 2.2);
-        const alpha = Math.min(.85, (.25 + scale * .22) * (.8 + .2 * Math.sin(elapsed * .6 + star.phase)));
-        context.strokeStyle = `rgba(183, 224, 249, ${alpha})`;
-        context.fillStyle = `rgba(211, 236, 255, ${alpha})`;
-
-        if (warp > .025) {
-          const previousScale = 500 / (star.z + travel * 3);
-          context.lineWidth = Math.max(.6, radius * .75);
-          context.beginPath();
-          context.moveTo(width / 2 + star.x * previousScale + camera.x * previousScale * 11, height / 2 + star.y * previousScale + camera.y * previousScale * 11);
-          context.lineTo(x, y);
-          context.stroke();
-        } else {
-          context.beginPath();
-          context.arc(x, y, radius, 0, Math.PI * 2);
-          context.fill();
-        }
+        const radius = Math.min(star.radius * scale, 2.5);
+        const alpha = Math.min(.95, (.35 + scale * .22) * (.8 + .2 * Math.sin(elapsed * 1.2 + star.phase)));
+        context.fillStyle = `rgba(${star.color}, ${alpha * .12})`;
+        context.beginPath();
+        context.arc(x, y, radius * 3.5, 0, Math.PI * 2);
+        context.fill();
+        context.fillStyle = `rgba(${star.color}, ${alpha})`;
+        context.beginPath();
+        context.arc(x, y, radius, 0, Math.PI * 2);
+        context.fill();
       }
 
       scene.style.setProperty('--look-x', `${moving ? camera.x * 9 : 0}px`);
@@ -90,12 +81,13 @@ export function Starfield({ moving, warpStarted }: { moving: boolean; warpStarte
       canvas.width = Math.round(width * ratio);
       canvas.height = Math.round(height * ratio);
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
-      stars = Array.from({ length: width < 700 ? 100 : 240 }, () => ({
+      stars = Array.from({ length: width < 700 ? 100 : 240 }, (_, index) => ({
         x: (random() - .5) * width * 3,
         y: (random() - .5) * height * 3,
         z: 60 + random() * 1240,
-        radius: .3 + random() * 1.2,
+        radius: .5 + random() * 1.2,
         phase: random() * Math.PI * 2,
+        color: STAR_COLORS[index % STAR_COLORS.length],
       }));
       restart();
     }
@@ -126,7 +118,7 @@ export function Starfield({ moving, warpStarted }: { moving: boolean; warpStarte
       scene.style.removeProperty('--look-x');
       scene.style.removeProperty('--look-y');
     };
-  }, [moving, warpStarted]);
+  }, [moving]);
 
   return <canvas ref={canvasRef} className="star-canvas" aria-hidden="true" />;
 }

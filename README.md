@@ -2,7 +2,7 @@
 
 The Edson family website, currently occupying an unreasonable amount of the space-time continuum to say almost nothing.
 
-A cinematic single-page holding site with original planetary artwork, luminous typography, pointer-responsive stars, and an entirely unnecessary hyperspace button. The header control pauses motion; the page also follows the visitor's reduced-motion preference. No sound, account, cookies, or analytics are added.
+A neon single-page holding site whose only visible copy is "nothing to see here move along." The original Bungee typography and cyan, magenta, violet and gold palette return with animated chrome lettering, orbiting lights, a moving grid and pointer-responsive stars. The small icon in the corner pauses motion; the page also follows the visitor's reduced-motion preference. No sound, account, cookies, or analytics are added.
 
 ## Local development
 
@@ -29,4 +29,4 @@ npm run build
 
 ## Artwork
 
-`public/cosmic-horizon.webp` is original artwork created with the built-in image generation tool and encoded as WebP (1536 x 1024, approximately 85 KB). The original social-preview image `public/og.png` is preserved. The exact generation prompt is in `ARTWORK.md`.
+The earlier planetary backdrop is retained as an unused asset, not displayed on this revision. `public/cosmic-horizon.webp` is original artwork created with the built-in image generation tool and encoded as WebP (1536 x 1024, approximately 85 KB). The original social-preview image `public/og.png` is preserved. The exact generation prompt is in `ARTWORK.md`.

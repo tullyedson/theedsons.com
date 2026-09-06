@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
+import { Bungee, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
+const display = Bungee({ variable: '--font-display', subsets: ['latin'], weight: '400' });
 const body = Space_Grotesk({ variable: '--font-body', subsets: ['latin'] });
 
 export const metadata: Metadata = {
@@ -26,5 +27,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body className={body.variable}>{children}</body></html>;
+  return <html lang="en"><body className={`${display.variable} ${body.variable}`}>{children}</body></html>;
 }
