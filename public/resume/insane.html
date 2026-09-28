@@ -20,10 +20,12 @@ a{color:inherit}
 .topbar nav{display:flex;gap:clamp(9px,2vw,26px)}
 .topbar nav a{text-decoration:none;font:800 11px/1.2 'Arial Narrow',Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase}
 .topbar nav a:hover,.topbar nav a:focus-visible{color:#b93018;text-decoration:underline;text-underline-offset:4px}
-.controls{display:flex;gap:7px}
+.controls{display:flex;gap:7px;flex-wrap:wrap}
 .control{border:2px solid var(--ink);border-radius:2px;background:var(--acid);color:var(--ink);padding:7px 10px;font:900 10px/1 Arial,sans-serif;letter-spacing:.04em;box-shadow:3px 3px 0 var(--ink);cursor:pointer;white-space:nowrap;transition:transform .15s,box-shadow .15s}
 .control:hover,.control:focus-visible{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 .control#replay{background:var(--flame)}
+.control#sound{background:var(--ember);color:var(--cream)}
+.control#sound[aria-pressed="true"]{background:var(--acid);color:var(--ink)}
 .resume{max-width:1280px;margin:auto;padding:0 clamp(18px,4vw,65px) 90px}
 .hero{position:relative;isolation:isolate;min-height:750px;display:flex;flex-direction:column;justify-content:center;padding:100px 0 110px;overflow:visible}
 .hero::before{content:'';position:absolute;z-index:-1;inset:0 -50vw;background:radial-gradient(ellipse at 65% 40%,#97412733,transparent 46%),repeating-linear-gradient(-13deg,transparent 0 47px,#e99a3120 48px 49px,transparent 50px 97px);mask-image:linear-gradient(to bottom,transparent 1%,#000 25%,#000 85%,transparent)}
@@ -47,25 +49,34 @@ a{color:inherit}
 .word-incoming{top:4%;left:7%;animation:incoming 5.8s ease-in-out infinite}
 .word-boom{top:39%;right:2%;color:var(--cream);animation:boom-word 5.8s ease-out infinite}
 .word-crunch{right:30%;bottom:4%;color:var(--flame);font-size:clamp(30px,4.2vw,65px);animation:crunch-word 4.8s ease-in-out infinite}
+.word-pew{top:57%;left:9%;color:var(--acid);font-size:clamp(27px,3vw,43px);animation:pew-word 5.8s ease-out infinite}
 .ship{position:absolute;z-index:8;width:180px;filter:drop-shadow(5px 8px 0 #151711) drop-shadow(0 0 14px #ffad50);transform-origin:center;will-change:transform}
 .ship svg{display:block;width:100%;height:auto}
 .ship-a{top:6%;left:-30%;animation:ship-run 5.8s cubic-bezier(.45,.1,.3,1) infinite}
 .ship-b{top:33%;right:-22%;width:140px;animation:ship-dive 6.5s ease-in-out infinite}
+.ship-c{top:9%;left:-29%;width:190px;filter:drop-shadow(0 0 13px #d8f45b);animation:ufo-pass 8.8s ease-in-out infinite}
 .tiny-ship{position:absolute;z-index:12;bottom:29%;left:10%;width:86px;--prey-travel:300px;animation:ship-chew 4.8s ease-in-out infinite}
 .tiny-ship svg{display:block;width:100%;height:auto}
 .laser{position:absolute;z-index:7;width:180px;height:5px;border-radius:10px;background:var(--acid);box-shadow:0 0 12px var(--acid),0 0 26px var(--acid);transform:rotate(-18deg);transform-origin:left center}
 .laser-a{top:29%;left:34%;animation:laser-shot 5.8s linear infinite}
 .laser-b{top:53%;right:15%;width:130px;background:var(--ember);box-shadow:0 0 15px var(--ember);transform:rotate(31deg);animation:laser-shot 6.5s 1.4s linear infinite}
 .kaiju{position:absolute;z-index:11;right:-4%;bottom:-7%;width:290px;height:350px;transform:scaleX(-1);filter:drop-shadow(9px 13px 0 #14170f)}
-.kaiju svg{width:100%;height:100%;overflow:visible}
-.kaiju-body{transform-origin:50% 88%;animation:kaiju-bob 4.8s ease-in-out infinite}
-.kaiju-jaw{transform-origin:75% 45%;animation:kaiju-chomp 4.8s ease-in-out infinite}
-.kaiju-arm{transform-origin:66% 53%;animation:kaiju-grab 4.8s ease-in-out infinite}
+.kaiju svg{width:100%;height:100%;overflow:visible;transform-origin:50% 88%;animation:kaiju-bob 4.8s ease-in-out infinite}
+.kaiju-lower-jaw{transform-box:fill-box;transform-origin:0% 0%;animation:kaiju-chomp 4.8s ease-in-out infinite}
+.kaiju-mouth-cavity{transform-box:fill-box;transform-origin:0% 0%;animation:mouth-open 4.8s ease-in-out infinite}
+.kaiju-arm{transform-box:fill-box;transform-origin:5% 10%;animation:kaiju-grab 4.8s ease-in-out infinite}
 .kaiju-eye{animation:eye-flash 4.8s infinite}
 .explosion-ring{position:absolute;z-index:10;top:32%;right:18%;width:160px;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--cream) 0 9%,var(--acid) 12% 18%,var(--flame) 24% 36%,var(--ember) 40%,transparent 70%);filter:drop-shadow(0 0 28px #ff983f);animation:explosion 5.8s ease-out infinite}
 .explosion-ring::before{content:'';position:absolute;inset:-32%;background:conic-gradient(from 15deg,transparent 0 4%,var(--flame) 5% 8%,transparent 9% 18%,var(--ember) 19% 22%,transparent 23% 32%,var(--acid) 33% 36%,transparent 37% 45%,var(--flame) 46% 49%,transparent 50% 60%,var(--ember) 61% 64%,transparent 65% 74%,var(--acid) 75% 78%,transparent 79% 88%,var(--flame) 89% 92%,transparent 93%);clip-path:polygon(50% 0,60% 35%,100% 15%,69% 48%,100% 75%,59% 63%,50% 100%,42% 63%,0 80%,31% 51%,0 17%,41% 37%);animation:spin 1.6s linear infinite}
 .scene-caption{position:absolute;z-index:14;right:15%;bottom:1%;padding:4px 7px;background:var(--acid);border:2px solid var(--ink);color:var(--ink);font:900 11px Impact,sans-serif;letter-spacing:.08em;transform:rotate(5deg)}
-.summary{position:relative;z-index:12;margin:-40px 0 100px;max-width:1010px;padding:28px 32px;border:4px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--ink);box-shadow:10px 10px 0 var(--ember),18px 18px 0 #11130e;font-size:clamp(18px,1.8vw,23px);font-weight:700;line-height:1.48}
+
+.scroll-cue{position:absolute;z-index:16;left:48%;bottom:13px;width:205px;height:157px;color:var(--cream);text-decoration:none;filter:drop-shadow(5px 7px 0 #11130e);transform:rotate(-8deg);transition:transform .2s,filter .2s}
+.scroll-cue:hover,.scroll-cue:focus-visible{transform:rotate(-8deg) scale(1.1);filter:drop-shadow(5px 7px 0 #11130e) drop-shadow(0 0 13px var(--flame))}
+.scroll-cue-label{position:absolute;z-index:1;left:-30px;top:0;font:900 20px/.9 Impact,'Arial Black',sans-serif;letter-spacing:.08em;text-shadow:3px 3px 0 var(--ember),5px 5px 0 var(--ink);transform:rotate(-8deg)}
+.scroll-cue svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.marquee-lights circle{animation:marquee-chase 1.2s linear infinite;animation-delay:calc(var(--n)*-.1s)}
+@keyframes marquee-chase{0%,100%{fill:#fff7c6;filter:drop-shadow(0 0 7px #fff7c6);opacity:1}30%,80%{fill:#b4502d;filter:none;opacity:.35}}
+.summary{position:relative;z-index:12;scroll-margin-top:100px;margin:-40px 0 100px;max-width:1010px;padding:28px 32px;border:4px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--ink);box-shadow:10px 10px 0 var(--ember),18px 18px 0 #11130e;font-size:clamp(18px,1.8vw,23px);font-weight:700;line-height:1.48}
 .summary::before{content:'THE PERSON BEHIND THE MAYHEM / 00';display:block;margin-bottom:12px;color:#b73820;font:900 12px Impact,sans-serif;letter-spacing:.12em}
 section{position:relative;margin:0 0 100px;scroll-margin-top:100px}
 .section-index{display:inline-block;padding:4px 8px;background:var(--acid);color:var(--ink);font:900 13px Impact,sans-serif;letter-spacing:.13em;transform:rotate(-2deg)}
@@ -114,28 +125,31 @@ h2{margin:15px 0 26px;color:var(--cream);font:900 clamp(40px,6vw,75px)/.95 Impac
 @keyframes incoming{0%,8%,60%,100%{opacity:0;transform:translate(-100px,-35px) rotate(-24deg) scale(.2)}18%,40%{opacity:1;transform:translate(0,0) rotate(-11deg) scale(1)}}
 @keyframes boom-word{0%,34%,60%,100%{opacity:0;transform:rotate(17deg) scale(.1)}39%{opacity:1;transform:rotate(17deg) scale(1.7)}48%{opacity:1;transform:rotate(11deg) scale(1)}}
 @keyframes crunch-word{0%,40%,75%,100%{opacity:0;transform:rotate(13deg) scale(.2)}48%,62%{opacity:1;transform:rotate(-12deg) scale(1.25)}}
-@keyframes ship-run{0%,8%{transform:translate(-60%,30%) rotate(-21deg) scale(.55);opacity:0}14%{opacity:1}36%{transform:translate(240%,45%) rotate(13deg) scale(1.1);opacity:1}42%,100%{transform:translate(280%,70%) rotate(75deg) scale(.2);opacity:0}}
-@keyframes ship-dive{0%,17%{transform:translate(100%,-80%) rotate(-130deg) scale(.5);opacity:0}27%{opacity:1}56%{transform:translate(-220%,105%) rotate(-150deg) scale(1.1);opacity:1}67%,100%{transform:translate(-300%,180%) rotate(-230deg) scale(.2);opacity:0}}
+@keyframes pew-word{0%,20%,40%,100%{opacity:0;transform:rotate(-14deg) scale(.2)}24%,31%{opacity:1;transform:rotate(-8deg) scale(1.1)}}
+@keyframes ship-run{0%,8%{transform:translate(-60%,25%) rotate(6deg) scale(.55);opacity:0}14%{opacity:1}36%{transform:translate(240%,45%) rotate(8deg) scale(1.1);opacity:1}42%,100%{transform:translate(300%,65%) rotate(12deg) scale(.2);opacity:0}}
+@keyframes ship-dive{0%,17%{transform:translate(100%,-80%) rotate(-20deg) scale(.5);opacity:0}27%{opacity:1}56%{transform:translate(-220%,105%) rotate(-22deg) scale(1.1);opacity:1}67%,100%{transform:translate(-330%,190%) rotate(-25deg) scale(.2);opacity:0}}
+@keyframes ufo-pass{0%,12%{transform:translate(-70%,10%) rotate(-5deg) scale(.65);opacity:0}20%{opacity:1}57%{transform:translate(290%,70%) rotate(4deg) scale(1);opacity:1}69%,100%{transform:translate(445%,90%) rotate(8deg) scale(.7);opacity:0}}
 @keyframes ship-chew{0%,10%{transform:translate(-180px,-140px) rotate(-20deg) scale(.55);opacity:0}20%{opacity:1}42%{transform:translate(var(--prey-travel),50px) rotate(8deg) scale(.85);opacity:1}51%{transform:translate(calc(var(--prey-travel) + 35px),55px) rotate(24deg) scale(.65);opacity:1}61%,100%{transform:translate(calc(var(--prey-travel) + 65px),78px) rotate(95deg) scale(.1);opacity:0}}
 @keyframes laser-shot{0%,21%,37%,100%{opacity:0;transform:scaleX(.1) rotate(-18deg)}24%,30%{opacity:1;transform:scaleX(1) rotate(-18deg)}}
 @keyframes explosion{0%,35%,58%,100%{opacity:0;transform:scale(.05) rotate(0)}40%{opacity:1;transform:scale(1.4) rotate(32deg)}49%{opacity:.9;transform:scale(1) rotate(65deg)}}
 @keyframes kaiju-bob{0%,100%{transform:rotate(-2deg) translateY(4px)}50%{transform:rotate(3deg) translateY(-7px)}}
-@keyframes kaiju-chomp{0%,40%,64%,100%{transform:rotate(0)}47%{transform:rotate(-21deg)}54%{transform:rotate(10deg)}}
-@keyframes kaiju-grab{0%,40%,70%,100%{transform:rotate(0)}52%{transform:rotate(-22deg)}}
+@keyframes kaiju-chomp{0%,31%,67%,100%{transform:rotate(0)}39%{transform:rotate(11deg)}47%,54%{transform:rotate(30deg)}60%{transform:rotate(-4deg)}}
+@keyframes mouth-open{0%,31%,67%,100%{transform:scaleY(.72)}43%,55%{transform:scaleY(1.35)}}
+@keyframes kaiju-grab{0%,35%,70%,100%{transform:rotate(0)}48%,57%{transform:rotate(-27deg)}}
 @keyframes eye-flash{0%,44%,58%,100%{fill:#f3e3ad}50%{fill:#f7fc5f}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes spark-burst{from{opacity:1;transform:translate(0,0) rotate(0) scale(1.2)}to{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.1)}}
 @keyframes blast-pop{0%{opacity:0;transform:translate(-50%,-50%) rotate(-18deg) scale(.1)}25%{opacity:1;transform:translate(-50%,-50%) rotate(8deg) scale(1.3)}100%{opacity:0;transform:translate(-50%,-80%) rotate(-7deg) scale(.9)}}
 @keyframes card-shake{0%,100%{transform:none}20%{transform:translate(-7px,3px) rotate(-1deg)}40%{transform:translate(6px,-2px) rotate(1deg)}60%{transform:translate(-4px,3px)}80%{transform:translate(3px,-2px)}}
 @media(max-width:850px){.topbar{flex-wrap:wrap}.topbar nav{order:3;width:100%;justify-content:space-between}.hero{min-height:790px;justify-content:flex-start;padding-top:100px}.hero h1{font-size:clamp(72px,15vw,130px)}.battle-scene{top:12%;right:-6%;width:68vw;opacity:.8}.summary{margin-top:-10px}}
-@media(max-width:600px){.topbar{gap:8px;padding:10px 13px}.topbar nav a{font-size:9px}.brand{font-size:12px}.control{padding:6px 7px;font-size:9px}.resume{padding:0 18px 70px}.hero{min-height:0;padding:74px 0 40px}.hero h1{font-size:clamp(67px,16vw,98px)}.tagline{font-size:19px;margin-top:24px}.battle-scene{position:relative;right:auto;top:auto;width:100%;height:360px;margin-top:16px;order:5;opacity:1}.planet{width:70%;right:12%;top:5%}.ship{width:115px}.ship-b{width:100px}.kaiju{width:160px;height:220px;right:6%;bottom:0}.tiny-ship{width:57px;left:10%;bottom:48%;--prey-travel:125px}.explosion-ring{width:100px}.comic-word{font-size:31px;-webkit-text-stroke:1px var(--ink)}.word-boom{top:34%;right:8%;font-size:26px}.word-crunch{bottom:3%;right:35%;font-size:28px}.summary{margin:0 4px 70px;padding:21px;box-shadow:6px 6px 0 var(--ember),11px 11px 0 #11130e;font-size:17px}section{margin-bottom:75px}.skills-section{padding:23px}.role{margin-left:30px;padding:18px}.role::before{left:-39px}.experience-section::before{left:8px}.role-head{flex-direction:column;gap:5px}.earlier{grid-template-columns:1fr}.footer{font-size:9px}}
-@media(max-width:390px){.hero h1{font-size:clamp(56px,15.5vw,72px)}.eyebrow{font-size:9px}.contact{font-size:11px}.battle-scene{height:300px}.kaiju{width:155px;height:205px}.word-incoming{font-size:26px}.topbar nav{gap:5px}}
+@media(max-width:600px){.topbar{gap:8px;padding:10px 13px}.topbar nav a{font-size:9px}.brand{font-size:12px}.control{padding:6px 7px;font-size:9px}.resume{padding:0 18px 70px}.hero{min-height:0;padding:74px 0 40px}.hero h1{font-size:clamp(67px,16vw,98px)}.tagline{font-size:19px;margin-top:24px}.battle-scene{position:relative;right:auto;top:auto;width:100%;height:360px;margin-top:16px;order:5;opacity:1}.scroll-cue{left:1%;bottom:8px;width:130px;height:100px}.scroll-cue-label{left:0;top:-17px;font-size:15px}.planet{width:70%;right:12%;top:5%}.ship{width:115px}.ship-b{width:100px}.ship-c{width:120px}.word-pew{top:64%;left:4%;font-size:23px}.kaiju{width:160px;height:220px;right:6%;bottom:0}.tiny-ship{width:57px;left:10%;bottom:48%;--prey-travel:125px}.explosion-ring{width:100px}.comic-word{font-size:31px;-webkit-text-stroke:1px var(--ink)}.word-boom{top:34%;right:8%;font-size:26px}.word-crunch{bottom:3%;right:35%;font-size:28px}.summary{margin:0 4px 70px;padding:21px;box-shadow:6px 6px 0 var(--ember),11px 11px 0 #11130e;font-size:17px}section{margin-bottom:75px}.skills-section{padding:23px}.role{margin-left:30px;padding:18px}.role::before{left:-39px}.experience-section::before{left:8px}.role-head{flex-direction:column;gap:5px}.earlier{grid-template-columns:1fr}.footer{font-size:9px}}
+@media(max-width:390px){.hero h1{font-size:clamp(56px,15.5vw,72px)}.eyebrow{font-size:9px}.contact{font-size:11px}.battle-scene{height:300px}.scroll-cue{bottom:3px;width:115px;height:88px}.kaiju{width:155px;height:205px}.word-incoming{font-size:26px}.topbar nav{gap:5px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}#stars,#fx-layer{display:none}.battle-scene .ship,.battle-scene .laser,.battle-scene .explosion-ring{display:none}}
 @page{size:letter;margin:.42in .52in}
 @media print{
 :root{--ink:#17212b;--muted:#4a5660}
 html,body{color:#17212b;background:white;font:9pt/1.14 Calibri,Arial,sans-serif}
-body::before,body::after,#stars,.progress,.topbar,.battle-scene,#fx-layer,.eyebrow,.section-index,.footer{display:none!important}
+body::before,body::after,#stars,.progress,.topbar,.battle-scene,#fx-layer,.eyebrow,.section-index,.footer,.scroll-cue{display:none!important}
 .resume{max-width:none;padding:0}.hero{min-height:0;display:block;padding:0}.hero::before{display:none}
 .hero h1{color:#17212b;background:none;filter:none;text-shadow:none;font:700 25pt/1 Calibri,Arial,sans-serif;letter-spacing:0}
 .hero h1 .word{display:inline}.hero h1 .word:first-child::after{content:' '}
@@ -156,7 +170,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
 </head>
 <body>
 <div class="progress" aria-hidden="true"></div><canvas id="stars" aria-hidden="true"></canvas><div id="fx-layer" aria-hidden="true"></div>
-<div class="topbar"><div class="brand">TULLY // ENGINEER</div><nav aria-label="Resume sections"><a href="#top">About</a><a href="#expertise">Skills</a><a href="#experience">Experience</a><a href="#earlier">Origins</a><a href="#education">Education</a></nav><div class="controls"><button class="control" id="replay" type="button">REPLAY MAYHEM</button><button class="control" id="effects" type="button" aria-pressed="true">EFFECTS ON</button><button class="control" id="print" type="button">PRINT</button></div></div>
+<div class="topbar"><div class="brand">TULLY // ENGINEER</div><nav aria-label="Resume sections"><a href="#top">About</a><a href="#expertise">Skills</a><a href="#experience">Experience</a><a href="#earlier">Origins</a><a href="#education">Education</a></nav><div class="controls"><button class="control" id="replay" type="button">REPLAY MAYHEM</button><button class="control" id="effects" type="button" aria-pressed="true">EFFECTS ON</button><button class="control" id="sound" type="button" aria-pressed="false" title="Play music and sound effects">AUDIO OFF</button><button class="control" id="print" type="button">PRINT</button></div></div>
 <main class="resume">
   <header class="hero" id="top">
     <p class="eyebrow">HUMAN INTELLIGENCE / ENGINEERING LEADERSHIP</p><h1 aria-label="Tully Edson"><span class="word"><span class="letter" style="--i:0;--from-x:300px;--from-y:160px;--spin:40deg">T</span><span class="letter" style="--i:1;--from-x:-335px;--from-y:-183px;--spin:-47deg">U</span><span class="letter" style="--i:2;--from-x:370px;--from-y:-206px;--spin:54deg">L</span><span class="letter" style="--i:3;--from-x:-405px;--from-y:229px;--spin:-61deg">L</span><span class="letter" style="--i:4;--from-x:440px;--from-y:-252px;--spin:68deg">Y</span></span> <span class="word"><span class="letter" style="--i:6;--from-x:510px;--from-y:298px;--spin:82deg">E</span><span class="letter" style="--i:7;--from-x:-545px;--from-y:-321px;--spin:-89deg">D</span><span class="letter" style="--i:8;--from-x:580px;--from-y:-344px;--spin:96deg">S</span><span class="letter" style="--i:9;--from-x:-615px;--from-y:367px;--spin:-103deg">O</span><span class="letter" style="--i:10;--from-x:650px;--from-y:-390px;--spin:110deg">N</span></span></h1>
@@ -164,7 +178,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
     <p class="contact">Austin, TX  |  512-917-9983  |  <a href="mailto:tedson@theedsons.com">tedson@theedsons.com</a></p>
   <div class="battle-scene" aria-hidden="true">
 <div class="planet"></div>
-<span class="comic-word word-incoming">INCOMING!</span><span class="comic-word word-boom">KABOOM!</span><span class="comic-word word-crunch">CRUNCH!</span>
+<span class="comic-word word-incoming">INCOMING!</span><span class="comic-word word-boom">KABOOM!</span><span class="comic-word word-crunch">CRUNCH!</span><span class="comic-word word-pew">PEW! PEW!</span>
 <div class="ship ship-a"><svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path d="M16 66 71 43 150 11 135 52 204 56 215 66 204 78 135 81 150 119 71 88Z" fill="#f25931" stroke="#20231b" stroke-width="8" stroke-linejoin="round"/>
 <path d="M26 66 84 56 142 42 128 64 187 65 126 71 142 89 84 76Z" fill="#f4ead4" stroke="#20231b" stroke-width="4"/>
@@ -174,13 +188,23 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
 <path d="M17 56-9 40 2 65-10 89 18 76Z" fill="#ff9e43" stroke="#20231b" stroke-width="5"/>
 <path d="M2 60-38 65 2 71Z" fill="#f4ead4"/>
 </svg></div><div class="ship ship-b"><svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M16 66 71 43 150 11 135 52 204 56 215 66 204 78 135 81 150 119 71 88Z" fill="#f25931" stroke="#20231b" stroke-width="8" stroke-linejoin="round"/>
-<path d="M26 66 84 56 142 42 128 64 187 65 126 71 142 89 84 76Z" fill="#f4ead4" stroke="#20231b" stroke-width="4"/>
-<path d="M79 49 140 11 129 52ZM79 83l61 36-11-38Z" fill="#d8f45b" stroke="#20231b" stroke-width="4"/>
-<ellipse cx="105" cy="66" rx="25" ry="16" fill="#24261d" stroke="#20231b" stroke-width="4"/>
-<ellipse cx="105" cy="66" rx="17" ry="9" fill="#d8f45b"/>
-<path d="M17 56-9 40 2 65-10 89 18 76Z" fill="#ff9e43" stroke="#20231b" stroke-width="5"/>
-<path d="M2 60-38 65 2 71Z" fill="#f4ead4"/>
+<path d="M7 65 64 44 105 13 132 46 194 31 181 63 194 99 132 83 105 116 64 85Z" fill="#d8f45b" stroke="#20231b" stroke-width="8" stroke-linejoin="round"/>
+<path d="M18 65 83 53 141 61 198 64 141 69 83 77Z" fill="#f4ead4" stroke="#20231b" stroke-width="4"/>
+<path d="M82 47 105 13 131 46 115 59ZM82 84l23 32 26-33-16-13Z" fill="#f25931" stroke="#20231b" stroke-width="4"/>
+<path d="M160 48 205 29l-16 34 17 38-46-17Z" fill="#ff9e43" stroke="#20231b" stroke-width="5"/>
+<ellipse cx="111" cy="65" rx="22" ry="11" fill="#20231b"/><ellipse cx="111" cy="65" rx="14" ry="6" fill="#f25931"/>
+<path d="m195 56 37-19-11 26 12 30-38-19Z" fill="#f4ead4"/>
+</svg></div><div class="ship ship-c"><svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M69 66c2-32 18-50 41-50s39 18 41 50Z" fill="#a3c756" stroke="#20231b" stroke-width="7"/>
+<path d="M78 60c5-22 15-34 32-35 16 1 27 13 32 35Z" fill="#f4ead4" opacity=".75"/>
+<ellipse cx="110" cy="76" rx="101" ry="33" fill="#f25931" stroke="#20231b" stroke-width="8"/>
+<path d="M11 72c31 12 161 12 198 0" fill="none" stroke="#f4ead4" stroke-width="7"/>
+<ellipse cx="110" cy="90" rx="63" ry="17" fill="#627b39" stroke="#20231b" stroke-width="6"/>
+<circle cx="45" cy="79" r="8" fill="#d8f45b" stroke="#20231b" stroke-width="4"/>
+<circle cx="78" cy="86" r="8" fill="#ff9e43" stroke="#20231b" stroke-width="4"/>
+<circle cx="142" cy="86" r="8" fill="#ff9e43" stroke="#20231b" stroke-width="4"/>
+<circle cx="175" cy="79" r="8" fill="#d8f45b" stroke="#20231b" stroke-width="4"/>
+<path d="m91 100-16 30m54-30 16 30" stroke="#d8f45b" stroke-width="5" stroke-linecap="round" opacity=".7"/>
 </svg></div>
 <div class="laser laser-a"></div><div class="laser laser-b"></div><div class="explosion-ring"></div>
 <div class="tiny-ship"><svg viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -200,22 +224,36 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
 <path d="M103 175c-16 66 8 103 41 121m75-119c15 29 16 75-2 106" fill="none" stroke="#a7b977" stroke-width="12" stroke-linecap="round"/>
 <path d="m117 344-1-19 15-3 9 21m39 0 11-32 23-1 17 33" fill="#4c6634" stroke="#20231b" stroke-width="7"/>
 <path d="m116 344 11 5 9-5 8 5m54-5 11 5 9-5 8 5" fill="none" stroke="#f4ead4" stroke-width="6" stroke-linecap="round"/>
-<path class="kaiju-arm" d="M195 194c26 4 51 16 63 42l20 3-5 15-22-4-7 16-12-8 3-17-40-9Z" fill="#819753" stroke="#20231b" stroke-width="8" stroke-linejoin="round"/>
-<path d="m276 239 13-4-8 18-15 1m-14-1 13 10-21 2" fill="#f4ead4" stroke="#20231b" stroke-width="5"/>
+<g class="kaiju-arm">
+<path d="M195 194c26 4 51 16 63 42l20 3-5 15-22-4-7 16-12-8 3-17-40-9Z" fill="#819753" stroke="#20231b" stroke-width="8" stroke-linejoin="round"/>
+<path class="kaiju-claws" d="m276 239 13-4-8 18-15 1m-14-1 13 10-21 2" fill="#f4ead4" stroke="#20231b" stroke-width="5"/>
+</g>
 <path class="kaiju-head" d="M142 138c1-35 24-63 56-72 10-30 34-42 58-34l-10 23 36 10c18 6 18 25 5 35l-28 10-1 35-37 21-39-12Z" fill="#8fa35b" stroke="#20231b" stroke-width="9" stroke-linejoin="round"/>
 
-<path d="M212 104c22 4 51 1 77-4-6 20-20 35-44 40l-29-7Z" fill="#321e18" stroke="#20231b" stroke-width="6"/>
+<path class="kaiju-mouth-cavity" d="M211 102c22 5 52 3 80-3-2 33-19 55-47 57-19 0-30-17-33-54Z" fill="#321e18" stroke="#20231b" stroke-width="6"/>
 <path d="m231 104 8 15 7-14 7 14 8-15 8 13 7-13" fill="#fff7e8" stroke="#20231b" stroke-width="2"/>
+<g class="kaiju-lower-jaw">
 <path class="kaiju-jaw" d="M211 132c27 13 52 12 81-1-7 23-23 38-48 37-17 0-30-10-33-36Z" fill="#647b3e" stroke="#20231b" stroke-width="8"/>
-<path d="m229 140 7 14 7-12 7 13 8-14 7 12" fill="#f4ead4" stroke="#20231b" stroke-width="2"/>
+<path class="kaiju-lower-teeth" d="m229 140 7 14 7-12 7 13 8-14 7 12" fill="#f4ead4" stroke="#20231b" stroke-width="2"/>
+<path d="M247 158c10-5 22-5 31-12" fill="none" stroke="#f25931" stroke-width="6" stroke-linecap="round"/>
+</g>
 <ellipse class="kaiju-eye" cx="254" cy="78" rx="8" ry="5" fill="#f3e3ad" stroke="#20231b" stroke-width="3"/>
 <circle cx="257" cy="78" r="2.5" fill="#20231b"/>
 <ellipse cx="279" cy="84" rx="3" ry="2" fill="#20231b"/>
 <path d="M170 192c-2 38 11 75 31 93" fill="none" stroke="#4d6836" stroke-width="7" stroke-linecap="round"/>
 </svg></div>
 <span class="scene-caption">KAIJU INTERVENTION / UNPLANNED</span>
-</div></header>
-  <p class="summary reveal">Highly technical engineering executive with more than 30 years building software platforms and leading very large teams. Stays hands-on with current technology and partners with internal and external customers and Product to turn needs into plans. Leads Zynga’s AI engineering team building software and game-building factories, knowledge bases, and systems that protect personal information and secrets for safe AI use in a billion-dollar company.</p>
+</div><a class="scroll-cue" href="#summary" aria-label="Scroll down to profile">
+<span class="scroll-cue-label">SCROLL<br>DOWN</span>
+<svg viewBox="0 0 220 155" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<path d="M21 60 C77 13 150 22 156 95" fill="none" stroke="#20231b" stroke-width="46" stroke-linecap="round"/>
+<path d="M21 60 C77 13 150 22 156 95" fill="none" stroke="#f25931" stroke-width="36" stroke-linecap="round"/>
+<path d="M112 91 154 139 204 98 188 75 160 99 139 70Z" fill="#f25931" stroke="#20231b" stroke-width="10" stroke-linejoin="round"/>
+<path d="M112 91 154 139 204 98" fill="none" stroke="#ffbd65" stroke-width="4" stroke-linecap="round"/>
+<g class="marquee-lights" fill="#fff7c6" stroke="#20231b" stroke-width="2">
+<circle style="--n:0" cx="22" cy="59" r="5"/><circle style="--n:1" cx="42" cy="47" r="5"/><circle style="--n:2" cx="63" cy="37" r="5"/><circle style="--n:3" cx="85" cy="32" r="5"/><circle style="--n:4" cx="108" cy="33" r="5"/><circle style="--n:5" cx="128" cy="43" r="5"/><circle style="--n:6" cx="143" cy="59" r="5"/><circle style="--n:7" cx="153" cy="81" r="5"/><circle style="--n:8" cx="155" cy="106" r="5"/><circle style="--n:9" cx="155" cy="126" r="5"/><circle style="--n:10" cx="174" cy="105" r="5"/><circle style="--n:11" cx="193" cy="94" r="5"/>
+</g></svg></a></header>
+  <p class="summary reveal" id="summary">Highly technical engineering executive with more than 30 years building software platforms and leading very large teams. Stays hands-on with current technology and partners with internal and external customers and Product to turn needs into plans. Leads Zynga’s AI engineering team building software and game-building factories, knowledge bases, and systems that protect personal information and secrets for safe AI use in a billion-dollar company.</p>
   <section class="skills-section reveal" id="expertise"><div class="section-index">01 / CAPABILITIES</div><h2>Core Expertise</h2><p class="expertise">AI engineering and data safety  •  Large-team leadership  •  Hands-on architecture  •  Customer and Product partnership  •  Developer platforms  •  CI/CD  •  DevSecOps  •  FinOps</p></section>
   <section class="experience-section" id="experience"><div class="section-index">02 / TRAJECTORY</div><h2>Professional Experience</h2><div class="role reveal tilt-card"><div class="role-head"><div><strong>Senior Director of Engineering, AI</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2025-Present</span></div><ul><li>Lead development of a software factory, game-building factory, and knowledge bases that bring advanced AI into software and game creation.</li><li>Work with internal customers and Product to define plans; shape AI systems that protect PII, secrets, and other sensitive data.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Director of Software Engineering, Central Technology</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2019-2025</span></div><ul><li>Created a multi-year Central Technology platform plan and led DevOps, Build Technology, Automation Engineering, DevSecOps, and FinOps; standardized build, test, release, security, and reporting.</li><li>Built a hybrid build platform adopted by more than 40 games; established FinOps, saving more than $2.4 million in cloud spend in its first year.</li><li>Rebuilt DevSecOps after staffing fell to two; team health rose from 1.2 to 4.4 out of 5 in a year. Helped reorganize Central Technology and mentored future leaders.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Senior Architect and Senior Engineering Manager</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2018-2019</span></div><ul><li>Designed common game libraries and modernized DevOps with infrastructure as code and shared tooling; aligned plans with product managers and producers, cutting millions in spend.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Chief Software Architect, Agents</strong><span class="company">Keynote Systems / Dynatrace</span></div><span class="dates">2004-2018</span></div><ul><li>Progressed from Principal Software Engineer and Architect to Chief Architect. Designed a global agent network handling more than 1 million measurements per hour and 1 petabyte per month for a $100 million business.</li><li>Automated staged deployment to thousands of machines and built real-time data-flow monitoring for Operations, NOC, and Support.</li><li>Designed and implemented VoIP, audio-anomaly, and 20-plus-protocol agents; Firefox and Chrome agents reused 85% of code, reducing the maintenance team by two thirds. Received the first DXcellence Award.</li></ul></div></section>
   <section class="earlier-section reveal" id="earlier"><div class="section-index">03 / ORIGINS</div><h2>Earlier Experience</h2><ul class="earlier"><li><strong>MetalShard, Inc.</strong>  |  Founder  |  2003-2004. Founded, marketed, and sold a turn-based Pocket PC game.</li><li><strong>Sheer Genius Software</strong>  |  UI Designer and VP Product Strategies  |  2001-2003. Built desktop UI and evaluated customer-driven product opportunities.</li><li><strong>Agillion</strong>  |  Senior Software Engineer and Interface Design Manager  |  2000-2001. Led a mixed team building a communications SaaS UI.</li><li><strong>Protosoft / Platinum Technology / Computer Associates</strong>  |  Engineer to Team Lead  |  1993-2000. Built reusable diagramming software, ported it to Unix, and received patents.</li></ul></section>
@@ -223,6 +261,239 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
 </main>
 <footer class="footer"><span>ENGINEERING / AI / TRUST</span><span>NO SPACESHIPS WERE HARMED IN THE MAKING OF THIS RESUME</span></footer>
 <script>
+window.ResumeAudio = (() => {
+  const tempo = 116;
+  const stepSeconds = 60 / tempo / 2;
+  const progressions = [
+    {bass:40,chord:[52,55,59],arp:[64,67,71,76]},
+    {bass:36,chord:[48,52,55],arp:[60,64,67,72]},
+    {bass:43,chord:[55,59,62],arp:[67,71,74,79]},
+    {bass:38,chord:[50,54,57],arp:[62,66,69,74]}
+  ];
+  const melody = [76,null,79,78,76,74,71,null,72,null,76,74,72,71,67,null,
+    79,null,83,81,79,76,74,null,78,null,81,79,78,74,71,null];
+  let context, master, musicBus, fxBus, noiseBuffer, echo;
+  let enabled = false, effectsActive = true, timer = 0, cueTimer = 0;
+  let nextTime = 0, tick = 0, sfxCount = 0, lastVoice = 0;
+  const cues = [
+    {selector:'.ship-a',duration:5800,phase:.13,kind:'whoosh',pan:-.6},
+    {selector:'.ship-a',duration:5800,phase:.25,kind:'pew'},
+    {selector:'.ship-b',duration:6500,phase:.27,kind:'whoosh',pan:.6},
+    {selector:'.ship-b',duration:6500,phase:.42,kind:'pew'},
+    {selector:'.ship-c',duration:8800,phase:.2,kind:'ufo'},
+    {selector:'.kaiju-lower-jaw',duration:4800,phase:.41,kind:'roar'}
+  ];
+  const midi = note => 440 * Math.pow(2,(note-69)/12);
+  function ensureContext() {
+    if (context) return;
+    const AudioClass = window.AudioContext || window.webkitAudioContext;
+    if (!AudioClass) throw new Error('Web Audio is unavailable');
+    context = new AudioClass();
+    master = context.createGain();
+    master.gain.value = 0;
+    master.connect(context.destination);
+    musicBus = context.createGain();
+    musicBus.gain.value = .48;
+    musicBus.connect(master);
+    fxBus = context.createGain();
+    fxBus.gain.value = .72;
+    fxBus.connect(master);
+    echo = context.createDelay(.7);
+    echo.delayTime.value = .26;
+    const feedback = context.createGain();
+    feedback.gain.value = .22;
+    const wet = context.createGain();
+    wet.gain.value = .16;
+    echo.connect(feedback).connect(echo);
+    echo.connect(wet).connect(musicBus);
+    noiseBuffer = context.createBuffer(1,context.sampleRate,context.sampleRate);
+    const data = noiseBuffer.getChannelData(0);
+    for (let i=0;i<data.length;i++) data[i]=Math.random()*2-1;
+  }
+  function synth(freq,time,duration,type,level,destination,cutoff) {
+    const osc = context.createOscillator();
+    const gain = context.createGain();
+    const filter = context.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(cutoff || 3200,time);
+    osc.type = type;
+    osc.frequency.setValueAtTime(Math.max(20,freq),time);
+    gain.gain.setValueAtTime(.0001,time);
+    gain.gain.exponentialRampToValueAtTime(Math.max(level,.0002),time+.012);
+    gain.gain.exponentialRampToValueAtTime(.0001,time+duration);
+    osc.connect(filter).connect(gain).connect(destination);
+    osc.start(time);
+    osc.stop(time+duration+.03);
+    return {osc,gain,filter};
+  }
+  function noise(time,duration,type,frequency,level,destination,pan=0) {
+    const source = context.createBufferSource();
+    source.buffer = noiseBuffer;
+    const filter = context.createBiquadFilter();
+    filter.type=type;
+    filter.frequency.setValueAtTime(frequency,time);
+    const gain = context.createGain();
+    gain.gain.setValueAtTime(Math.max(level,.0002),time);
+    gain.gain.exponentialRampToValueAtTime(.0001,time+duration);
+    const stereo = context.createStereoPanner();
+    stereo.pan.value=pan;
+    source.connect(filter).connect(gain).connect(stereo).connect(destination);
+    source.start(time);
+    source.stop(time+duration+.01);
+    return {source,filter,gain};
+  }
+  function kick(time) {
+    const hit=synth(135,time,.24,'sine',.33,musicBus,950);
+    hit.osc.frequency.exponentialRampToValueAtTime(45,time+.18);
+  }
+  function snare(time) {
+    noise(time,.15,'highpass',1100,.13,musicBus);
+    const hit=synth(170,time,.09,'triangle',.11,musicBus,1300);
+    hit.osc.frequency.exponentialRampToValueAtTime(90,time+.08);
+  }
+  function hat(time) { noise(time,.052,'highpass',5500,.035,musicBus); }
+  function pad(notes,time) {
+    notes.forEach((note,index)=>{
+      const tone=synth(midi(note),time,stepSeconds*7.7,'sawtooth',.022,musicBus,780);
+      tone.osc.detune.value=index===1?5:-4;
+    });
+  }
+  function scheduleTick(time,index) {
+    const bar=Math.floor(index/8)%4;
+    const step=index%8;
+    const section=progressions[bar];
+    if(step===0) pad(section.chord,time);
+    if(step===0||step===4) {
+      const bass=synth(midi(section.bass),time,stepSeconds*3.2,'sawtooth',.15,musicBus,540);
+      bass.osc.frequency.setValueAtTime(midi(section.bass),time);
+      kick(time);
+    }
+    if(step===2||step===6) snare(time);
+    hat(time);
+    const arpNote=section.arp[[0,1,2,1,3,2,1,2][step]];
+    const arp=synth(midi(arpNote),time,stepSeconds*.8,'triangle',.055,musicBus,2800);
+    arp.gain.connect(echo);
+    const lead=melody[index%melody.length];
+    if(lead!==null){
+      const voice=synth(midi(lead),time,stepSeconds*1.6,'square',.055,musicBus,2100);
+      voice.gain.connect(echo);
+    }
+  }
+  function scheduleMusic(){
+    if(!enabled||!context)return;
+    while(nextTime<context.currentTime+.35){
+      scheduleTick(nextTime,tick++);
+      nextTime+=stepSeconds;
+    }
+  }
+  function voice(text,pitch,rate,volume){
+    if(!enabled||!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window))return;
+    if(performance.now()-lastVoice<1200)return;
+    lastVoice=performance.now();
+    const utterance=new SpeechSynthesisUtterance(text);
+    utterance.pitch=pitch;utterance.rate=rate;utterance.volume=volume;
+    window.speechSynthesis.speak(utterance);
+  }
+  function whoosh(pan=0){
+    if(!enabled||!effectsActive||!context)return;
+    const now=context.currentTime+.01;
+    const sweep=noise(now,.55,'bandpass',380,.12,fxBus,pan);
+    sweep.filter.frequency.exponentialRampToValueAtTime(2600,now+.24);
+    sweep.filter.frequency.exponentialRampToValueAtTime(350,now+.53);
+    sweep.gain.gain.setValueAtTime(.0001,now);
+    sweep.gain.gain.exponentialRampToValueAtTime(.18,now+.15);
+    sweep.gain.gain.exponentialRampToValueAtTime(.0001,now+.55);
+    const engine=synth(92,now,.48,'sawtooth',.045,fxBus,480);
+    engine.osc.frequency.exponentialRampToValueAtTime(58,now+.45);
+    sfxCount++;
+  }
+  function pewPew(){
+    if(!enabled||!effectsActive||!context)return;
+    const now=context.currentTime+.01;
+    for(const offset of [0,.17]){
+      const laser=synth(930,now+offset,.22,'sawtooth',.1,fxBus,3200);
+      laser.osc.frequency.exponentialRampToValueAtTime(145,now+offset+.2);
+    }
+    voice('pew pew',1.7,1.8,.34);
+    sfxCount++;
+  }
+  function roar(){
+    if(!enabled||!effectsActive||!context)return;
+    const now=context.currentTime+.01;
+    const growl=synth(130,now,1.05,'sawtooth',.18,fxBus,700);
+    growl.osc.frequency.exponentialRampToValueAtTime(58,now+.95);
+    growl.filter.frequency.setValueAtTime(280,now);
+    growl.filter.frequency.exponentialRampToValueAtTime(1150,now+.4);
+    growl.filter.frequency.exponentialRampToValueAtTime(340,now+1);
+    const grit=noise(now,.9,'lowpass',1100,.065,fxBus);
+    grit.filter.frequency.exponentialRampToValueAtTime(350,now+.88);
+    voice('Raaawrr!',.5,.7,.48);
+    sfxCount++;
+  }
+  function ufo(){
+    if(!enabled||!effectsActive||!context)return;
+    whoosh(.2);
+    const now=context.currentTime+.01;
+    const hum=synth(360,now,.7,'sine',.075,fxBus,1000);
+    hum.osc.frequency.exponentialRampToValueAtTime(690,now+.32);
+    hum.osc.frequency.exponentialRampToValueAtTime(280,now+.69);
+    sfxCount++;
+  }
+  function boom(){
+    if(!enabled||!effectsActive||!context)return;
+    const now=context.currentTime+.01;
+    const impact=synth(110,now,.58,'sine',.22,fxBus,650);
+    impact.osc.frequency.exponentialRampToValueAtTime(42,now+.5);
+    noise(now,.4,'lowpass',900,.1,fxBus);
+    sfxCount++;
+  }
+  function pollCues(){
+    if(!enabled||!effectsActive||document.hidden)return;
+    const hero=document.querySelector('.hero').getBoundingClientRect();
+    if(hero.bottom<0||hero.top>innerHeight)return;
+    for(const cue of cues){
+      const animation=document.querySelector(cue.selector)?.getAnimations()[0];
+      if(!animation||typeof animation.currentTime!=='number')continue;
+      const current=Math.max(0,animation.currentTime);
+      const cycle=Math.floor(current/cue.duration);
+      const phase=(current%cue.duration)/cue.duration;
+      if(cue.seenCycle===undefined){
+        cue.seenCycle=cycle;
+        if(phase>=cue.phase)cue.firedCycle=cycle;
+      }
+      if(phase>=cue.phase&&cue.firedCycle!==cycle){
+        cue.firedCycle=cycle;
+        if(cue.kind==='whoosh')whoosh(cue.pan);
+        if(cue.kind==='pew')pewPew();
+        if(cue.kind==='ufo')ufo();
+        if(cue.kind==='roar')roar();
+      }
+    }
+  }
+  async function toggle(){
+    ensureContext();
+    if(enabled){
+      enabled=false;
+      clearInterval(timer);clearInterval(cueTimer);
+      master.gain.setTargetAtTime(0,context.currentTime,.08);
+      if('speechSynthesis' in window)window.speechSynthesis.cancel();
+      return false;
+    }
+    await context.resume();
+    enabled=true;
+    master.gain.setTargetAtTime(.82,context.currentTime,.12);
+    tick=0;nextTime=context.currentTime+.06;
+    cues.forEach(cue=>{cue.seenCycle=undefined;cue.firedCycle=undefined;});
+    scheduleMusic();
+    timer=setInterval(scheduleMusic,80);
+    cueTimer=setInterval(pollCues,60);
+    return true;
+  }
+  return {toggle,whoosh,pewPew,roar,boom,setEffectsActive:value=>{effectsActive=value;},debug:()=>({
+    enabled,contextState:context?.state||'not-created',musicTicks:tick,sfxCount
+  })};
+})();
+
 (() => {
   document.documentElement.classList.add('js');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -231,6 +502,8 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
   const ctx = canvas.getContext('2d');
   const layer = document.getElementById('fx-layer');
   const effectsButton = document.getElementById('effects');
+  const soundButton = document.getElementById('sound');
+  const sound = window.ResumeAudio;
   const fighter = document.querySelector('.ship-a svg').outerHTML;
   let active = !reduce.matches;
   let width = 0, height = 0, frame = 0, raf = 0, raidTimer = 0, particles = [];
@@ -277,6 +550,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
   }
   function burst(x, y, label) {
     if (!active) return;
+    sound.boom();
     const colors = ['#f25931', '#ff9e43', '#f4ead4', '#d8f45b'];
     for (let i = 0; i < 23; i++) {
       const bit = document.createElement('i');
@@ -315,6 +589,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
     ship.style.left = '-130px';
     ship.style.top = Math.max(50, y - 95) + 'px';
     layer.append(ship);
+    sound.whoosh(-.5);
     const flight = ship.animate([
       {transform:'translate(0, -40px) rotate(-12deg) scale(.6)', opacity:0},
       {transform:'translate(' + Math.round(x * .7) + 'px, 30px) rotate(5deg) scale(1)', opacity:1, offset:.5},
@@ -323,6 +598,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
     flight.onfinish = () => ship.remove();
     setTimeout(() => {
       if (!active) return;
+      sound.pewPew();
       const laser = document.createElement('div');
       laser.className = 'raid-laser';
       laser.style.left = Math.max(0, x - 190) + 'px';
@@ -363,6 +639,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
   if (!active) reveals.forEach(element => element.classList.add('is-visible'));
   function setActive(enabled) {
     active = enabled;
+    sound.setEffectsActive(active);
     body.classList.toggle('effects-off', !active);
     effectsButton.textContent = active ? 'EFFECTS ON' : 'EFFECTS OFF';
     effectsButton.setAttribute('aria-pressed', String(active));
@@ -378,6 +655,7 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
     }
   }
   resize();
+  sound.setEffectsActive(active);
   addEventListener('resize', resize);
   addEventListener('scroll', () => {
     const max = document.documentElement.scrollHeight - innerHeight;
@@ -399,6 +677,16 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
       void body.offsetWidth;
       body.classList.add('play');
       raidTimer = setTimeout(() => raid(document.querySelector('.summary')), 2800);
+    }
+  });
+  soundButton.addEventListener('click', async () => {
+    try {
+      const enabled = await sound.toggle();
+      soundButton.textContent = enabled ? 'AUDIO ON' : 'AUDIO OFF';
+      soundButton.setAttribute('aria-pressed', String(enabled));
+    } catch (error) {
+      soundButton.textContent = 'AUDIO UNAVAILABLE';
+      console.error(error);
     }
   });
   document.getElementById('replay').addEventListener('click', () => {
