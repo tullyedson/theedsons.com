@@ -70,12 +70,14 @@ a{color:inherit}
 .explosion-ring::before{content:'';position:absolute;inset:-32%;background:conic-gradient(from 15deg,transparent 0 4%,var(--flame) 5% 8%,transparent 9% 18%,var(--ember) 19% 22%,transparent 23% 32%,var(--acid) 33% 36%,transparent 37% 45%,var(--flame) 46% 49%,transparent 50% 60%,var(--ember) 61% 64%,transparent 65% 74%,var(--acid) 75% 78%,transparent 79% 88%,var(--flame) 89% 92%,transparent 93%);clip-path:polygon(50% 0,60% 35%,100% 15%,69% 48%,100% 75%,59% 63%,50% 100%,42% 63%,0 80%,31% 51%,0 17%,41% 37%);animation:spin 1.6s linear infinite}
 .scene-caption{position:absolute;z-index:14;right:15%;bottom:1%;padding:4px 7px;background:var(--acid);border:2px solid var(--ink);color:var(--ink);font:900 11px Impact,sans-serif;letter-spacing:.08em;transform:rotate(5deg)}
 
-.scroll-cue{position:absolute;z-index:16;left:48%;bottom:13px;width:205px;height:157px;color:var(--cream);text-decoration:none;filter:drop-shadow(5px 7px 0 #11130e);transform:rotate(-8deg);transition:transform .2s,filter .2s}
-.scroll-cue:hover,.scroll-cue:focus-visible{transform:rotate(-8deg) scale(1.1);filter:drop-shadow(5px 7px 0 #11130e) drop-shadow(0 0 13px var(--flame))}
-.scroll-cue-label{position:absolute;z-index:1;left:-30px;top:0;font:900 20px/.9 Impact,'Arial Black',sans-serif;letter-spacing:.08em;text-shadow:3px 3px 0 var(--ember),5px 5px 0 var(--ink);transform:rotate(-8deg)}
-.scroll-cue svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.marquee-lights circle{animation:marquee-chase 1.2s linear infinite;animation-delay:calc(var(--n)*-.1s)}
-@keyframes marquee-chase{0%,100%{fill:#fff7c6;filter:drop-shadow(0 0 7px #fff7c6);opacity:1}30%,80%{fill:#b4502d;filter:none;opacity:.35}}
+.scroll-cue{position:absolute;z-index:16;left:47%;bottom:55px;width:220px;height:135px;color:var(--ink);text-decoration:none;filter:drop-shadow(5px 7px 0 #11130e);transform:rotate(-4deg);transition:transform .2s,filter .2s}
+.scroll-cue:hover,.scroll-cue:focus-visible{transform:rotate(-4deg) scale(1.06);filter:drop-shadow(5px 7px 0 #11130e) drop-shadow(0 0 13px var(--flame))}
+.scroll-cue svg{display:block;width:100%;height:100%;overflow:visible}
+.marquee-shell{fill:#f39d32;stroke:#20231b;stroke-width:9;stroke-linejoin:round;stroke-linecap:round}
+.marquee-inset{fill:#ffd674;opacity:.58;pointer-events:none}
+.scroll-cue-label{position:absolute;left:24%;top:24%;font:900 19px/1 Impact,'Arial Black',sans-serif;letter-spacing:.06em;text-shadow:1px 1px 0 #fff0bb;white-space:nowrap;transform:rotate(2deg)}
+.marquee-lights circle{fill:#ffc96e;stroke:#bc5c22;stroke-width:1.4;animation:marquee-chase 2.8s linear infinite;animation-delay:calc(var(--n)*-.08s)}
+@keyframes marquee-chase{0%,12%{fill:#fffbe0;filter:drop-shadow(0 0 6px #fff4a5);opacity:1}18%,100%{fill:#f6b65a;filter:none;opacity:.72}}
 .summary{position:relative;z-index:12;scroll-margin-top:100px;margin:-40px 0 100px;max-width:1010px;padding:28px 32px;border:4px solid var(--ink);border-radius:3px;background:var(--paper);color:var(--ink);box-shadow:10px 10px 0 var(--ember),18px 18px 0 #11130e;font-size:clamp(18px,1.8vw,23px);font-weight:700;line-height:1.48}
 .summary::before{content:'THE PERSON BEHIND THE MAYHEM / 00';display:block;margin-bottom:12px;color:#b73820;font:900 12px Impact,sans-serif;letter-spacing:.12em}
 section{position:relative;margin:0 0 100px;scroll-margin-top:100px}
@@ -142,8 +144,8 @@ h2{margin:15px 0 26px;color:var(--cream);font:900 clamp(40px,6vw,75px)/.95 Impac
 @keyframes blast-pop{0%{opacity:0;transform:translate(-50%,-50%) rotate(-18deg) scale(.1)}25%{opacity:1;transform:translate(-50%,-50%) rotate(8deg) scale(1.3)}100%{opacity:0;transform:translate(-50%,-80%) rotate(-7deg) scale(.9)}}
 @keyframes card-shake{0%,100%{transform:none}20%{transform:translate(-7px,3px) rotate(-1deg)}40%{transform:translate(6px,-2px) rotate(1deg)}60%{transform:translate(-4px,3px)}80%{transform:translate(3px,-2px)}}
 @media(max-width:850px){.topbar{flex-wrap:wrap}.topbar nav{order:3;width:100%;justify-content:space-between}.hero{min-height:790px;justify-content:flex-start;padding-top:100px}.hero h1{font-size:clamp(72px,15vw,130px)}.battle-scene{top:12%;right:-6%;width:68vw;opacity:.8}.summary{margin-top:-10px}}
-@media(max-width:600px){.topbar{gap:8px;padding:10px 13px}.topbar nav a{font-size:9px}.brand{font-size:12px}.control{padding:6px 7px;font-size:9px}.resume{padding:0 18px 70px}.hero{min-height:0;padding:74px 0 40px}.hero h1{font-size:clamp(67px,16vw,98px)}.tagline{font-size:19px;margin-top:24px}.battle-scene{position:relative;right:auto;top:auto;width:100%;height:360px;margin-top:16px;order:5;opacity:1}.scroll-cue{left:1%;bottom:8px;width:130px;height:100px}.scroll-cue-label{left:0;top:-17px;font-size:15px}.planet{width:70%;right:12%;top:5%}.ship{width:115px}.ship-b{width:100px}.ship-c{width:120px}.word-pew{top:64%;left:4%;font-size:23px}.kaiju{width:160px;height:220px;right:6%;bottom:0}.tiny-ship{width:57px;left:10%;bottom:48%;--prey-travel:125px}.explosion-ring{width:100px}.comic-word{font-size:31px;-webkit-text-stroke:1px var(--ink)}.word-boom{top:34%;right:8%;font-size:26px}.word-crunch{bottom:3%;right:35%;font-size:28px}.summary{margin:0 4px 70px;padding:21px;box-shadow:6px 6px 0 var(--ember),11px 11px 0 #11130e;font-size:17px}section{margin-bottom:75px}.skills-section{padding:23px}.role{margin-left:30px;padding:18px}.role::before{left:-39px}.experience-section::before{left:8px}.role-head{flex-direction:column;gap:5px}.earlier{grid-template-columns:1fr}.footer{font-size:9px}}
-@media(max-width:390px){.hero h1{font-size:clamp(56px,15.5vw,72px)}.eyebrow{font-size:9px}.contact{font-size:11px}.battle-scene{height:300px}.scroll-cue{bottom:3px;width:115px;height:88px}.kaiju{width:155px;height:205px}.word-incoming{font-size:26px}.topbar nav{gap:5px}}
+@media(max-width:600px){.topbar{gap:8px;padding:10px 13px}.topbar nav a{font-size:9px}.brand{font-size:12px}.control{padding:6px 7px;font-size:9px}.resume{padding:0 18px 70px}.hero{min-height:0;padding:74px 0 40px}.hero h1{font-size:clamp(67px,16vw,98px)}.tagline{font-size:19px;margin-top:24px}.battle-scene{position:relative;right:auto;top:auto;width:100%;height:360px;margin-top:16px;order:5;opacity:1}.scroll-cue{left:0;bottom:0;width:195px;height:120px}.scroll-cue-label{font-size:13px}.planet{width:70%;right:12%;top:5%}.ship{width:115px}.ship-b{width:100px}.ship-c{width:120px}.word-pew{top:64%;left:4%;font-size:23px}.kaiju{width:160px;height:220px;right:6%;bottom:0}.tiny-ship{width:57px;left:10%;bottom:48%;--prey-travel:125px}.explosion-ring{width:100px}.comic-word{font-size:31px;-webkit-text-stroke:1px var(--ink)}.word-boom{top:34%;right:8%;font-size:26px}.word-crunch{bottom:3%;right:35%;font-size:28px}.summary{margin:0 4px 70px;padding:21px;box-shadow:6px 6px 0 var(--ember),11px 11px 0 #11130e;font-size:17px}section{margin-bottom:75px}.skills-section{padding:23px}.role{margin-left:30px;padding:18px}.role::before{left:-39px}.experience-section::before{left:8px}.role-head{flex-direction:column;gap:5px}.earlier{grid-template-columns:1fr}.footer{font-size:9px}}
+@media(max-width:390px){.hero h1{font-size:clamp(56px,15.5vw,72px)}.eyebrow{font-size:9px}.contact{font-size:11px}.battle-scene{height:300px}.scroll-cue{bottom:0;width:180px;height:110px}.kaiju{width:155px;height:205px}.word-incoming{font-size:26px}.topbar nav{gap:5px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}#stars,#fx-layer{display:none}.battle-scene .ship,.battle-scene .laser,.battle-scene .explosion-ring{display:none}}
 @page{size:letter;margin:.42in .52in}
 @media print{
@@ -244,15 +246,11 @@ section{margin:0 0 5px;break-inside:auto}h2{color:#17212b;text-shadow:none;font:
 </svg></div>
 <span class="scene-caption">KAIJU INTERVENTION / UNPLANNED</span>
 </div><a class="scroll-cue" href="#summary" aria-label="Scroll down to profile">
-<span class="scroll-cue-label">SCROLL<br>DOWN</span>
-<svg viewBox="0 0 220 155" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 60 C77 13 150 22 156 95" fill="none" stroke="#20231b" stroke-width="46" stroke-linecap="round"/>
-<path d="M21 60 C77 13 150 22 156 95" fill="none" stroke="#f25931" stroke-width="36" stroke-linecap="round"/>
-<path d="M112 91 154 139 204 98 188 75 160 99 139 70Z" fill="#f25931" stroke="#20231b" stroke-width="10" stroke-linejoin="round"/>
-<path d="M112 91 154 139 204 98" fill="none" stroke="#ffbd65" stroke-width="4" stroke-linecap="round"/>
-<g class="marquee-lights" fill="#fff7c6" stroke="#20231b" stroke-width="2">
-<circle style="--n:0" cx="22" cy="59" r="5"/><circle style="--n:1" cx="42" cy="47" r="5"/><circle style="--n:2" cx="63" cy="37" r="5"/><circle style="--n:3" cx="85" cy="32" r="5"/><circle style="--n:4" cx="108" cy="33" r="5"/><circle style="--n:5" cx="128" cy="43" r="5"/><circle style="--n:6" cx="143" cy="59" r="5"/><circle style="--n:7" cx="153" cy="81" r="5"/><circle style="--n:8" cx="155" cy="106" r="5"/><circle style="--n:9" cx="155" cy="126" r="5"/><circle style="--n:10" cx="174" cy="105" r="5"/><circle style="--n:11" cx="193" cy="94" r="5"/>
-</g></svg></a></header>
+<svg viewBox="0 0 330 200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<path class="marquee-shell" d="M25 29 Q20 19 31 19 L213 27 C261 29 274 60 274 104 L274 127 L299 127 Q312 127 303 139 L265 181 Q257 191 248 181 L209 141 Q200 129 214 128 L238 128 L238 113 Q238 104 229 103 L73 120 Q61 121 56 112 Z"/>
+<path class="marquee-inset" d="M43 35 211 42 Q255 45 258 100 L258 138 289 138 257 174 222 138 246 138 246 112 Q245 91 223 92 L68 108 Z"/>
+<g class="marquee-lights"><circle style="--n:0" cx="34" cy="32" r="4.8"/><circle style="--n:1" cx="56" cy="33" r="4.8"/><circle style="--n:2" cx="78" cy="34" r="4.8"/><circle style="--n:3" cx="100" cy="35" r="4.8"/><circle style="--n:4" cx="122" cy="36" r="4.8"/><circle style="--n:5" cx="144" cy="37" r="4.8"/><circle style="--n:6" cx="166" cy="38" r="4.8"/><circle style="--n:7" cx="188" cy="39" r="4.8"/><circle style="--n:8" cx="210" cy="41" r="4.8"/><circle style="--n:9" cx="231" cy="47" r="4.8"/><circle style="--n:10" cx="249" cy="59" r="4.8"/><circle style="--n:11" cx="261" cy="77" r="4.8"/><circle style="--n:12" cx="265" cy="98" r="4.8"/><circle style="--n:13" cx="266" cy="119" r="4.8"/><circle style="--n:14" cx="293" cy="136" r="4.8"/><circle style="--n:15" cx="280" cy="151" r="4.8"/><circle style="--n:16" cx="268" cy="166" r="4.8"/><circle style="--n:17" cx="256" cy="179" r="4.8"/><circle style="--n:18" cx="243" cy="165" r="4.8"/><circle style="--n:19" cx="229" cy="151" r="4.8"/><circle style="--n:20" cx="215" cy="136" r="4.8"/><circle style="--n:21" cx="239" cy="136" r="4.8"/><circle style="--n:22" cx="246" cy="118" r="4.8"/><circle style="--n:23" cx="236" cy="101" r="4.8"/><circle style="--n:24" cx="216" cy="95" r="4.8"/><circle style="--n:25" cx="194" cy="97" r="4.8"/><circle style="--n:26" cx="172" cy="99" r="4.8"/><circle style="--n:27" cx="150" cy="101" r="4.8"/><circle style="--n:28" cx="128" cy="103" r="4.8"/><circle style="--n:29" cx="106" cy="106" r="4.8"/><circle style="--n:30" cx="84" cy="108" r="4.8"/><circle style="--n:31" cx="66" cy="109" r="4.8"/><circle style="--n:32" cx="58" cy="94" r="4.8"/><circle style="--n:33" cx="50" cy="75" r="4.8"/><circle style="--n:34" cx="42" cy="55" r="4.8"/></g>
+</svg><span class="scroll-cue-label">SCROLL DOWN</span></a></header>
   <p class="summary reveal" id="summary">Highly technical engineering executive with more than 30 years building software platforms and leading very large teams. Stays hands-on with current technology and partners with internal and external customers and Product to turn needs into plans. Leads Zynga’s AI engineering team building software and game-building factories, knowledge bases, and systems that protect personal information and secrets for safe AI use in a billion-dollar company.</p>
   <section class="skills-section reveal" id="expertise"><div class="section-index">01 / CAPABILITIES</div><h2>Core Expertise</h2><p class="expertise">AI engineering and data safety  •  Large-team leadership  •  Hands-on architecture  •  Customer and Product partnership  •  Developer platforms  •  CI/CD  •  DevSecOps  •  FinOps</p></section>
   <section class="experience-section" id="experience"><div class="section-index">02 / TRAJECTORY</div><h2>Professional Experience</h2><div class="role reveal tilt-card"><div class="role-head"><div><strong>Senior Director of Engineering, AI</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2025-Present</span></div><ul><li>Lead development of a software factory, game-building factory, and knowledge bases that bring advanced AI into software and game creation.</li><li>Work with internal customers and Product to define plans; shape AI systems that protect PII, secrets, and other sensitive data.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Director of Software Engineering, Central Technology</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2019-2025</span></div><ul><li>Created a multi-year Central Technology platform plan and led DevOps, Build Technology, Automation Engineering, DevSecOps, and FinOps; standardized build, test, release, security, and reporting.</li><li>Built a hybrid build platform adopted by more than 40 games; established FinOps, saving more than $2.4 million in cloud spend in its first year.</li><li>Rebuilt DevSecOps after staffing fell to two; team health rose from 1.2 to 4.4 out of 5 in a year. Helped reorganize Central Technology and mentored future leaders.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Senior Architect and Senior Engineering Manager</strong><span class="company">Zynga / Take-Two Interactive</span></div><span class="dates">2018-2019</span></div><ul><li>Designed common game libraries and modernized DevOps with infrastructure as code and shared tooling; aligned plans with product managers and producers, cutting millions in spend.</li></ul></div><div class="role reveal tilt-card"><div class="role-head"><div><strong>Chief Software Architect, Agents</strong><span class="company">Keynote Systems / Dynatrace</span></div><span class="dates">2004-2018</span></div><ul><li>Progressed from Principal Software Engineer and Architect to Chief Architect. Designed a global agent network handling more than 1 million measurements per hour and 1 petabyte per month for a $100 million business.</li><li>Automated staged deployment to thousands of machines and built real-time data-flow monitoring for Operations, NOC, and Support.</li><li>Designed and implemented VoIP, audio-anomaly, and 20-plus-protocol agents; Firefox and Chrome agents reused 85% of code, reducing the maintenance team by two thirds. Received the first DXcellence Award.</li></ul></div></section>
@@ -274,14 +272,17 @@ window.ResumeAudio = (() => {
     79,null,83,81,79,76,74,null,78,null,81,79,78,74,71,null];
   let context, master, musicBus, fxBus, noiseBuffer, echo;
   let enabled = false, effectsActive = true, timer = 0, cueTimer = 0;
-  let nextTime = 0, tick = 0, sfxCount = 0, lastVoice = 0;
+  let nextTime = 0, tick = 0, sfxCount = 0;
+  const spokenAt = new Map();
   const cues = [
     {selector:'.ship-a',duration:5800,phase:.13,kind:'whoosh',pan:-.6},
     {selector:'.ship-a',duration:5800,phase:.25,kind:'pew'},
     {selector:'.ship-b',duration:6500,phase:.27,kind:'whoosh',pan:.6},
     {selector:'.ship-b',duration:6500,phase:.42,kind:'pew'},
     {selector:'.ship-c',duration:8800,phase:.2,kind:'ufo'},
-    {selector:'.kaiju-lower-jaw',duration:4800,phase:.41,kind:'roar'}
+    {selector:'.explosion-ring',duration:5800,phase:.4,kind:'boom'},
+    {selector:'.kaiju-lower-jaw',duration:4800,phase:.41,kind:'roar'},
+    {selector:'.kaiju-lower-jaw',duration:4800,phase:.62,kind:'crunch'}
   ];
   const midi = note => 440 * Math.pow(2,(note-69)/12);
   function ensureContext() {
@@ -388,8 +389,9 @@ window.ResumeAudio = (() => {
   }
   function voice(text,pitch,rate,volume){
     if(!enabled||!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window))return;
-    if(performance.now()-lastVoice<1200)return;
-    lastVoice=performance.now();
+    const now=performance.now();
+    if(now-(spokenAt.get(text)??-Infinity)<2200)return;
+    spokenAt.set(text,now);
     const utterance=new SpeechSynthesisUtterance(text);
     utterance.pitch=pitch;utterance.rate=rate;utterance.volume=volume;
     window.speechSynthesis.speak(utterance);
@@ -414,7 +416,7 @@ window.ResumeAudio = (() => {
       const laser=synth(930,now+offset,.22,'sawtooth',.1,fxBus,3200);
       laser.osc.frequency.exponentialRampToValueAtTime(145,now+offset+.2);
     }
-    voice('pew pew',1.7,1.8,.34);
+    voice('pew pew',1.7,1.8,.8);
     sfxCount++;
   }
   function roar(){
@@ -427,7 +429,7 @@ window.ResumeAudio = (() => {
     growl.filter.frequency.exponentialRampToValueAtTime(340,now+1);
     const grit=noise(now,.9,'lowpass',1100,.065,fxBus);
     grit.filter.frequency.exponentialRampToValueAtTime(350,now+.88);
-    voice('Raaawrr!',.5,.7,.48);
+    voice('Raaawrr!',.5,.7,.72);
     sfxCount++;
   }
   function ufo(){
@@ -439,12 +441,22 @@ window.ResumeAudio = (() => {
     hum.osc.frequency.exponentialRampToValueAtTime(280,now+.69);
     sfxCount++;
   }
-  function boom(){
+  function boom(word='kaboom'){
     if(!enabled||!effectsActive||!context)return;
     const now=context.currentTime+.01;
     const impact=synth(110,now,.58,'sine',.22,fxBus,650);
     impact.osc.frequency.exponentialRampToValueAtTime(42,now+.5);
     noise(now,.4,'lowpass',900,.1,fxBus);
+    voice(word.toLowerCase().replace(/[^a-z ]/g,''),.85,1.15,.95);
+    sfxCount++;
+  }
+  function crunch(){
+    if(!enabled||!effectsActive||!context)return;
+    const now=context.currentTime+.01;
+    noise(now,.16,'lowpass',900,.13,fxBus);
+    const snap=synth(190,now,.19,'sawtooth',.08,fxBus,1100);
+    snap.osc.frequency.exponentialRampToValueAtTime(64,now+.17);
+    voice('crunch',.55,.9,.85);
     sfxCount++;
   }
   function pollCues(){
@@ -467,6 +479,8 @@ window.ResumeAudio = (() => {
         if(cue.kind==='pew')pewPew();
         if(cue.kind==='ufo')ufo();
         if(cue.kind==='roar')roar();
+        if(cue.kind==='boom')boom('kaboom');
+        if(cue.kind==='crunch')crunch();
       }
     }
   }
@@ -489,7 +503,7 @@ window.ResumeAudio = (() => {
     cueTimer=setInterval(pollCues,60);
     return true;
   }
-  return {toggle,whoosh,pewPew,roar,boom,setEffectsActive:value=>{effectsActive=value;},debug:()=>({
+  return {toggle,whoosh,pewPew,roar,boom,crunch,setEffectsActive:value=>{effectsActive=value;},debug:()=>({
     enabled,contextState:context?.state||'not-created',musicTicks:tick,sfxCount
   })};
 })();
@@ -550,7 +564,7 @@ window.ResumeAudio = (() => {
   }
   function burst(x, y, label) {
     if (!active) return;
-    sound.boom();
+    sound.boom(label || 'KABOOM!');
     const colors = ['#f25931', '#ff9e43', '#f4ead4', '#d8f45b'];
     for (let i = 0; i < 23; i++) {
       const bit = document.createElement('i');
