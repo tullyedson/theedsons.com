@@ -34,10 +34,16 @@ h1::after { z-index: 1; color: var(--cyan); transform: translate(-3px, -1px); cl
 .orbit-inner { width: min(65vw, 620px); height: min(65vw, 620px); animation-direction: reverse; animation-duration: 8s; }
 .orbit span { position: absolute; top: 50%; left: -5px; width: 10px; height: 10px; border-radius: 50%; background: white; box-shadow: 0 0 12px white, 0 0 30px var(--pink); }
 .orbit-inner span { background: var(--cyan); box-shadow: 0 0 18px var(--cyan); }
-.arcade-link { position: absolute; z-index: 22; left: max(1.25rem, env(safe-area-inset-left)); bottom: max(1.25rem, env(safe-area-inset-bottom)); display: grid; place-items: center; width: 48px; height: 52px; border-radius: 8px; color: var(--cyan); text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .2s, filter .2s; }
+.site-links { position: absolute; z-index: 22; left: max(1.25rem, env(safe-area-inset-left)); bottom: max(1.25rem, env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; max-width: calc(100% - 2.5rem); }
+.arcade-link { display: grid; flex: none; place-items: center; width: 48px; height: 52px; border-radius: 8px; color: var(--cyan); text-decoration: none; -webkit-tap-highlight-color: transparent; transition: color .2s, filter .2s; }
 .arcade-link svg { width: 28px; height: 35px; }
 .arcade-link:hover { color: var(--pink); filter: drop-shadow(0 0 8px rgb(251 55 255 / 65%)); }
 .arcade-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.resume-link { padding: .55rem .65rem; border: 1px solid rgb(34 211 238 / 40%); border-radius: 6px; color: var(--cyan); background: rgb(3 2 11 / 60%); font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-decoration: none; white-space: nowrap; transition: color .2s, border-color .2s, box-shadow .2s; }
+.resume-link:hover { border-color: var(--cyan); color: white; box-shadow: 0 0 16px rgb(34 211 238 / 30%); }
+.resume-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.resume-link-insane { border-color: rgb(251 55 255 / 40%); color: var(--pink); }
+.resume-link-insane:hover { border-color: var(--pink); box-shadow: 0 0 16px rgb(251 55 255 / 30%); }
 
 @keyframes grid-travel { to { background-position: 0 52px; } }
 @keyframes arrive { from { opacity: 0; transform: scale(.78); filter: blur(18px); } to { opacity: 1; transform: scale(1); filter: blur(0); } }

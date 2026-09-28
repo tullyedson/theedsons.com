@@ -30,15 +30,19 @@ export default function Home() {
         <div className="signal" aria-hidden="true"><span /><span /><span /></div>
       </section>
 
-      <a className="arcade-link" href="https://astersarcade.com/" aria-label="Visit Aster's Arcade" title="Aster's Arcade">
-        <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M7 3h19l-2 8 2 12 3 4v10H4V27l3-4V3Z" />
-          <path d="M7 9h17M7 23h19M4 27h25" />
-          <path d="M10 12h11l2 8H10Z" />
-          <path d="M11 24v2m7-1h1m3 0h1M14 31h5v3h-5Z" />
-          <circle cx="11" cy="22.5" r="1.5" />
-        </svg>
-      </a>
+      <nav className="site-links" aria-label="Explore more">
+        <a className="arcade-link" href="https://astersarcade.com/" aria-label="Visit Aster's Arcade" title="Aster's Arcade">
+          <svg viewBox="0 0 32 40" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M7 3h19l-2 8 2 12 3 4v10H4V27l3-4V3Z" />
+            <path d="M7 9h17M7 23h19M4 27h25" />
+            <path d="M10 12h11l2 8H10Z" />
+            <path d="M11 24v2m7-1h1m3 0h1M14 31h5v3h-5Z" />
+            <circle cx="11" cy="22.5" r="1.5" />
+          </svg>
+        </a>
+        <a className="resume-link" href="/resume/professional.html">Professional resume</a>
+        <a className="resume-link resume-link-insane" href="/resume/insane.html">Insane resume</a>
+      </nav>
     </main>
   );
 }
